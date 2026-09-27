@@ -215,12 +215,10 @@ class KartteckenApp {
 
     this.cacheElements();
     this.bindEvents();
-    this.initCategoryFilters();
     this.startRound();
   }
 
   cacheElements() {
-    this.elCategoryFilters = document.getElementById("category-filters");
     this.elMode1x2 = document.getElementById("mode-1x2");
     this.elModeFree = document.getElementById("mode-free");
     this.elSoundToggle = document.getElementById("sound-toggle");
@@ -304,23 +302,6 @@ class KartteckenApp {
     document.getElementById("retry-mistakes-btn").addEventListener("click", () => this.startMistakesRound());
   }
 
-  initCategoryFilters() {
-    this.elCategoryFilters.innerHTML = "";
-    Object.values(CATEGORIES).forEach((cat) => {
-      const btn = document.createElement("button");
-      btn.className = `filter-pill ${this.currentCategory === cat.id ? "active" : ""}`;
-      btn.textContent = cat.name;
-      btn.dataset.category = cat.id;
-      btn.addEventListener("click", () => {
-        document.querySelectorAll(".filter-pill").forEach((b) => b.classList.remove("active"));
-        btn.classList.add("active");
-        this.currentCategory = cat.id;
-        this.startRound();
-      });
-      this.elCategoryFilters.appendChild(btn);
-    });
-  }
-
   setMode(mode) {
     if (this.currentMode === mode) return;
     this.currentMode = mode;
@@ -330,18 +311,7 @@ class KartteckenApp {
   }
 
   startRound(symbolsPool = null) {
-    let pool = symbolsPool;
-    if (!pool) {
-      if (this.currentCategory === "alla") {
-        pool = [...SYMBOLS];
-      } else {
-        pool = SYMBOLS.filter((s) => s.category === this.currentCategory);
-      }
-    }
-
-    if (pool.length === 0) {
-      pool = [...SYMBOLS];
-    }
+    const pool = (symbolsPool && symbolsPool.length > 0) ? symbolsPool : [...SYMBOLS];
 
     // Blanda frågorna
     this.queue = this.shuffleArray([...pool]);

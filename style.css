@@ -144,40 +144,6 @@ body {
   box-shadow: var(--shadow-sm);
 }
 
-.filter-scroll {
-  display: flex;
-  gap: 8px;
-  overflow-x: auto;
-  padding-bottom: 4px;
-  scrollbar-width: none;
-}
-.filter-scroll::-webkit-scrollbar {
-  display: none;
-}
-
-.filter-pill {
-  border: 1px solid var(--border-color);
-  background: #ffffff;
-  padding: 6px 14px;
-  border-radius: 20px;
-  font-size: 0.85rem;
-  font-weight: 500;
-  color: var(--text-muted);
-  white-space: nowrap;
-  cursor: pointer;
-  transition: all 0.15s ease;
-}
-
-.filter-pill:hover {
-  border-color: #94a3b8;
-}
-
-.filter-pill.active {
-  background: #1e293b;
-  color: #ffffff;
-  border-color: #1e293b;
-}
-
 /* Huvudinnehåll */
 .main-container {
   max-width: 800px;

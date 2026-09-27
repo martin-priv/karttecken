@@ -4,13 +4,13 @@
  */
 
 const CATEGORIES = {
-  alla: { id: "alla", name: "Alla tecken", color: "#374151", bg: "#f3f4f6" },
-  vit: { id: "vit", name: "Vit (Skog)", color: "#1f2937", bg: "#f9fafb" },
-  gul: { id: "gul", name: "Gul (Öppen mark)", color: "#b45309", bg: "#fef3c7" },
-  gron: { id: "gron", name: "Grön (Tät skog & tomt)", color: "#15803d", bg: "#dcfce7" },
-  bla: { id: "bla", name: "Blå (Vatten & sankmark)", color: "#0369a1", bg: "#e0f2fe" },
-  svart: { id: "svart", name: "Svart (Byggt & sten)", color: "#111827", bg: "#f3f4f6" },
-  brun: { id: "brun", name: "Brun (Höjdformationer)", color: "#9a3412", bg: "#ffedd5" }
+  alla: { id: "alla", name: "Alla tecken", shortName: "Alla", color: "#64748b", bg: "#f3f4f6" },
+  vit: { id: "vit", name: "Vit (Skog)", shortName: "Vit", color: "#ffffff", bg: "#f9fafb" },
+  gul: { id: "gul", name: "Gul (Öppen mark)", shortName: "Gul", color: "#eab308", bg: "#fef3c7" },
+  gron: { id: "gron", name: "Grön (Tät skog & tomt)", shortName: "Grön", color: "#22c55e", bg: "#dcfce7" },
+  bla: { id: "bla", name: "Blå (Vatten & sankmark)", shortName: "Blå", color: "#0284c7", bg: "#e0f2fe" },
+  svart: { id: "svart", name: "Svart (Byggt & sten)", shortName: "Svart", color: "#1e293b", bg: "#f3f4f6" },
+  brun: { id: "brun", name: "Brun (Höjdformationer)", shortName: "Brun", color: "#9a3412", bg: "#ffedd5" }
 };
 
 const SYMBOLS = [
