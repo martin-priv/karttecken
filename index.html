@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="description" content="Träna på vanliga karttecken och orienteringssymboler. Quiz med 1 X 2 och fritext.">
+  <meta name="theme-color" content="#15803d">
+  <title>Vanliga karttecken - Quiz & Träning</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><polygon points='0,0 100,100 0,100' fill='%23ea580c'/><polygon points='0,0 100,0 100,100' fill='%23ffffff'/><rect width='100' height='100' fill='none' stroke='%23334155' stroke-width='8'/></svg>">
+</head>
+<body>
+
+  <!-- Huvudrubrik & Verktygsrad -->
+  <header class="app-header">
+    <div class="header-inner">
+      <div class="logo-group">
+        <div class="ol-flag" title="Orienteringsskärm"></div>
+        <h1 class="app-title">Vanliga karttecken</h1>
+      </div>
+      <div class="header-actions">
+        <button id="open-library-btn" class="icon-btn" title="Uppslagsbok över alla karttecken">
+          <span>📖</span>
+          <span>Lexikon</span>
+        </button>
+        <button id="sound-toggle" class="icon-btn" title="Växla ljud">
+          <span id="sound-icon">🔊</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Kontrollrad: Lägesväljare & Kategorifilter -->
+  <section class="controls-bar">
+    <div class="mode-switcher" role="tablist">
+      <button id="mode-1x2" class="mode-btn active" role="tab">1 X 2 (Flerval)</button>
+      <button id="mode-free" class="mode-btn" role="tab">Fritext</button>
+    </div>
+    <div id="category-filters" class="filter-scroll" aria-label="Kategorier">
+      <!-- Fylls i dynamiskt av JavaScript -->
+    </div>
+  </section>
+
+  <!-- Huvudinnehåll -->
+  <main class="main-container">
+    
+    <!-- QUIZ VY -->
+    <section id="quiz-view" class="view-section active">
+      <div class="quiz-card">
+        
+        <!-- Framsteg & Poäng -->
+        <div class="quiz-status-row">
+          <span id="progress-text">Tecken 1 av 20</span>
+          <span id="streak-badge" class="streak-tag" style="display: none;">🔥 0 i rad</span>
+          <span id="score-text">Poäng: 0</span>
+        </div>
+        
+        <div class="progress-track">
+          <div id="progress-bar" class="progress-fill"></div>
+        </div>
+
+        <!-- Symbolyta -->
+        <div class="symbol-display-area">
+          <span id="current-category-badge" class="category-tag">Kategori</span>
+          <div class="symbol-frame">
+            <img id="symbol-image" src="" alt="Orienteringskarttecken">
+          </div>
+        </div>
+
+        <!-- Svarsläge 1: 1 X 2 Flerval -->
+        <div id="options-container" class="options-grid">
+          <!-- 3 alternativ renderas dynamiskt -->
+        </div>
+
+        <!-- Svarsläge 2: Fritext -->
+        <div id="free-input-container" class="free-input-box" style="display: none;">
+          <input 
+            type="text" 
+            id="free-input" 
+            class="free-input" 
+            placeholder="Skriv tecknets namn här..." 
+            autocomplete="off" 
+            autocorrect="off" 
+            spellcheck="false"
+          >
+          <button id="free-submit-btn" class="submit-btn">Svara</button>
+        </div>
+
+        <!-- Återkoppling (rätt/fel svar & förklaring) -->
+        <div id="feedback-box" class="feedback-box">
+          <div id="feedback-title" class="feedback-title">Rätt!</div>
+          <p id="feedback-desc" class="feedback-desc">Beskrivning av tecknet.</p>
+        </div>
+
+        <!-- Nästa-knapp -->
+        <div class="next-action-row">
+          <button id="next-btn" class="btn-primary" style="display: none;">
+            <span>Nästa tecken</span>
+            <span>➔</span>
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- RESULTAT VY -->
+    <section id="result-view" class="view-section">
+      <div class="result-card">
+        <div id="result-badge" class="result-badge">🌲 Nyfiken skogsvandrare</div>
+        
+        <div class="result-score-wrap">
+          <div id="result-score-number" class="result-score-large">20 / 20</div>
+          <div id="result-pct-number" class="result-pct">100% rätt</div>
+        </div>
+
+        <p id="result-message" class="result-msg">Snyggt jobbat!</p>
+
+        <div class="result-actions">
+          <button id="restart-btn" class="btn-primary">Spela igen</button>
+          <button id="retry-mistakes-btn" class="btn-secondary" style="display: none;">Träna på felen</button>
+        </div>
+
+        <div id="mistakes-section" class="mistakes-container">
+          <div id="mistakes-list"></div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- LEXIKON / UPPSLAGSBOK MODAL -->
+  <div id="library-view" class="library-modal">
+    <div class="library-inner">
+      <div class="library-header">
+        <h2>Orienteringslexikon</h2>
+        <button id="close-library-btn" class="icon-btn">Stäng ✕</button>
+      </div>
+      <div id="library-grid" class="library-grid">
+        <!-- Renderas från symbols.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Konfettibehållare vid toppbetyg -->
+  <div id="confetti-container" class="confetti-wrapper"></div>
+
+  <!-- Skript -->
+  <script src="symbols.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
